@@ -20,7 +20,7 @@ class SearchResult extends StatelessWidget {
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
           crossAxisCount: 3,
-          childAspectRatio: 1/1.4,
+          childAspectRatio: 1 / 1.4,
           shrinkWrap: true,
           children: List.generate(20, (index) {
             return const MainCard();
@@ -38,9 +38,9 @@ class MainCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7),
-          image:
-             const DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.fill)),
+          borderRadius: BorderRadius.circular(7),
+          image: const DecorationImage(
+              image: NetworkImage(imageUrl), fit: BoxFit.fill)),
     );
   }
 }
