@@ -3,9 +3,9 @@ import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
 
 import '../../home/widget/custom_button_widget.dart';
+import '../../widget/video_widget.dart';
 
-const imageUrltemp =
-    'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/iQlJyRecJeGGzQGT2rEcyAgz89F.jpg';
+
 class ComingSoonWidget extends StatelessWidget {
   const ComingSoonWidget({
     Key? key,
@@ -42,31 +42,7 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 200,
-                    child: Image.network(
-                      imageUrltemp,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Colors.black.withOpacity(0.5),
-                        child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.volume_off,
-                              size: 18,
-                            ))),
-                  )
-                ],
-              ),
+              const VideoWidget(imageUrl: imageUrltemp1,),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
@@ -120,3 +96,4 @@ class ComingSoonWidget extends StatelessWidget {
     );
   }
 }
+
