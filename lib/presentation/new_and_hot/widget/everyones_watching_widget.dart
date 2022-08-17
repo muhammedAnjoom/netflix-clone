@@ -39,7 +39,7 @@ class EveryOnesWatchingWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: const [
             CustomButtonWidget(
-              icon: Icons.share_outlined,
+              icon: Icons.share,
               title: "share",
               iconSize: 35,
               textSize: 16,
