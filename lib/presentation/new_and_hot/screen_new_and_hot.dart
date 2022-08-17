@@ -1,13 +1,70 @@
-
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/core/colors/colors.dart';
+import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/presentation/widget/app_bar_widget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
-  const ScreenNewAndHot({ Key? key }) : super(key: key);
+  const ScreenNewAndHot({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('new and hot')),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(90),
+          child: AppBar(
+            title: const Text(
+              "New & Hot",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            actions: [
+              const Icon(
+                Icons.cast,
+                size: 30,
+                color: kwhiteColor,
+              ),
+              kWidth,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 5),
+                color: Colors.blue,
+                width: 30,
+                height: 30,
+              ),
+              kWidth,
+            ],
+            bottom: TabBar(
+              labelColor: kBlackColor,
+              isScrollable: true,
+              unselectedLabelColor: kwhiteColor,
+              labelStyle:
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              indicator: BoxDecoration(
+                color: kwhiteColor,
+                borderRadius: kRadius30,
+              ),
+              tabs: const [
+                Tab(
+                  text: "🍿Coming Soon",
+                ),
+                Tab(
+                  text: "👀 Everyone's Watching",
+                )
+              ],
+            ),
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            _buildTabBarViewText("Coming soon"),
+            _buildTabBarViewText("Everyone's watching"),
+          ],
+        ),
+      ),
     );
+  }
+  
+  _buildTabBarViewText(String name) {
+    return Center(child: Text('$name'),);
   }
 }
