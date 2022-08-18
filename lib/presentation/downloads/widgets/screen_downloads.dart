@@ -9,7 +9,7 @@ class ScreenDownloads extends StatelessWidget {
   ScreenDownloads({Key? key}) : super(key: key);
 
   final _widgetList = [
-    _SmartDownloads(),
+    const _SmartDownloads(),
     Section2(),
     const Section3(),
   ];
@@ -78,18 +78,18 @@ class Section2 extends StatelessWidget {
                 ),
                 DownloadsImageWidget(
                   imageList: imageList[0],
-                  margin: EdgeInsets.only(left: 140, bottom: 10,top: 45),
+                  margin: const EdgeInsets.only(left: 140, bottom: 10,top: 45),
                   angle: 15,
                   size: Size(size.width * 0.4, size.width * 0.58),
                 ),
                 DownloadsImageWidget(
                     imageList: imageList[1],
-                    margin: EdgeInsets.only(right: 140, bottom: 10,top: 45),
+                    margin: const EdgeInsets.only(right: 140, bottom: 10,top: 45),
                     angle: -15,
                     size: Size(size.width * 0.4, size.width * 0.58)),
                 DownloadsImageWidget(
                   imageList: imageList[2],
-                  margin: EdgeInsets.only(left: 0, bottom: 20,top: 20),
+                  margin:const EdgeInsets.only(left: 0, bottom: 20,top: 20),
                   size: Size(
                     size.width * 0.45,
                     size.width * 0.65,
