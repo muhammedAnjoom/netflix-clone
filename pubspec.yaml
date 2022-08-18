@@ -31,10 +31,14 @@ environment:
 dependencies:
   bordered_text: ^2.0.0
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  dio: ^4.0.6
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  get_it: ^7.2.0
   google_fonts: 3.0.1
+  injectable: ^1.5.3
   json_annotation: ^4.6.0
   json_serializable: ^6.3.1
   video_player: 2.4.6
@@ -45,6 +49,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.1.0+1
+  injectable_generator: ^1.5.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
