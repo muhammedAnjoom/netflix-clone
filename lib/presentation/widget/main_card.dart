@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/constants.dart';
 
@@ -14,11 +13,12 @@ class MainCard extends StatelessWidget {
       child: Container(
         width: 130,
         height: 250,
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           borderRadius: kRadius10,
-          image:const  DecorationImage(
+          image: const DecorationImage(
             fit: BoxFit.fill,
-            image: NetworkImage("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg"),
+            image: NetworkImage(
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg"),
           ),
         ),
       ),

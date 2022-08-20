@@ -41,12 +41,12 @@ class NumberCard extends StatelessWidget {
               strokeColor: kwhiteColor,
               child: Text(
                 "${index + 1}",
-                style:const TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 150,
                   decoration: TextDecoration.none,
-                  ),
+                ),
               ),
             ),
           )

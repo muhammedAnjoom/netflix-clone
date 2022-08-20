@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/constants.dart';
 import 'package:netflix_clone/presentation/home/widget/number_card.dart';
@@ -7,10 +5,11 @@ import 'package:netflix_clone/presentation/widget/main_title.dart';
 
 class NumberTitleCard extends StatelessWidget {
   const NumberTitleCard({
-    Key? key, required this.title,
+    Key? key,
+    required this.title,
   }) : super(key: key);
 
-final String title;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +22,11 @@ final String title;
           maxHeight: 200,
           child: ListView(
               scrollDirection: Axis.horizontal,
-              children:
-                  List.generate(10, (index) =>  NumberCard(index: index,))),
+              children: List.generate(
+                  10,
+                  (index) => NumberCard(
+                        index: index,
+                      ))),
         )
       ],
     );

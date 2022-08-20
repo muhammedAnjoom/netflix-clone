@@ -12,7 +12,7 @@ class BottomNaviagtionWidget extends StatelessWidget {
       builder: (context, int newIndex, _) {
         return BottomNavigationBar(
             currentIndex: newIndex,
-            onTap: (index){
+            onTap: (index) {
               indexChangeNotifier.value = index;
             },
             type: BottomNavigationBarType.fixed,

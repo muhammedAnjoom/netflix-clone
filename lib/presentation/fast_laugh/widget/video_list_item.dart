@@ -4,6 +4,7 @@ import 'package:netflix_clone/core/colors/colors.dart';
 
 const imageUrl =
     'https://www.themoviedb.org/t/p/w250_and_h141_face/84XPpjGvxNyExjSuLQe0SzioErt.jpg';
+
 class VideoListItem extends StatelessWidget {
   final int index;
   const VideoListItem({Key? key, required this.index}) : super(key: key);
@@ -28,7 +29,11 @@ class VideoListItem extends StatelessWidget {
                     radius: 30,
                     backgroundColor: Colors.black.withOpacity(0.5),
                     child: IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.volume_off,size: 30,)))
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.volume_off,
+                          size: 30,
+                        )))
                 //  right side
                 ,
                 Column(
@@ -69,14 +74,14 @@ class VideoActionsWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: Column(
         children: [
-           Icon(
+          Icon(
             icon,
             color: kwhiteColor,
             size: 30,
           ),
           Text(
             title,
-            style:const TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           )
         ],
       ),

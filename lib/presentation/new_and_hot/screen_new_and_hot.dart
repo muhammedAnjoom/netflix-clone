@@ -76,9 +76,8 @@ class ScreenNewAndHot extends StatelessWidget {
 
   Widget _buildEveryonesWatching() {
     return ListView.builder(
-      itemCount: 5,
+        itemCount: 5,
         itemBuilder: (BuildContext context, index) =>
             const EveryOnesWatchingWidget());
   }
 }
-

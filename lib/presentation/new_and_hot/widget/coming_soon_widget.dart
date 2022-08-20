@@ -5,7 +5,6 @@ import 'package:netflix_clone/core/constants.dart';
 import '../../home/widget/custom_button_widget.dart';
 import '../../widget/video_widget.dart';
 
-
 class ComingSoonWidget extends StatelessWidget {
   const ComingSoonWidget({
     Key? key,
@@ -42,7 +41,9 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const VideoWidget(imageUrl: imageUrltemp1,),
+              const VideoWidget(
+                imageUrl: imageUrltemp1,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
@@ -96,4 +97,3 @@ class ComingSoonWidget extends StatelessWidget {
     );
   }
 }
-

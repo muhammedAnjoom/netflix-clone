@@ -16,14 +16,17 @@ class BackgroundCard extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(image: NetworkImage(mainImage)),
           ),
-          foregroundDecoration:const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.black,Colors.transparent,Colors.transparent,Colors.black],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0,0.2,0.8,1]
-            )
-          ),
+          foregroundDecoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [
+                    Colors.black,
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.black
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0, 0.2, 0.8, 1])),
         ),
         Positioned(
           left: 0,
@@ -50,6 +53,7 @@ class BackgroundCard extends StatelessWidget {
       ],
     );
   }
+
   TextButton _PlayButton() {
     return TextButton.icon(
       onPressed: () {},
