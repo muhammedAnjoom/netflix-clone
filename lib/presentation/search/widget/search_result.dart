@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/presentation/fast_laugh/widget/video_list_item.dart';
 import 'package:netflix_clone/presentation/search/widget/search_title.dart';
-
-const imageUrl =
-    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qd4dZuYRmgJtBQUm1E8zclAZXE4.jpg';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({Key? key}) : super(key: key);
@@ -15,16 +15,23 @@ class SearchResult extends StatelessWidget {
       children: [
         const SearchTitleText(title: "Movies & TV"),
         kHeight20,
-        Expanded(
-            child: GridView.count(
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          crossAxisCount: 3,
-          childAspectRatio: 1 / 1.4,
-          shrinkWrap: true,
-          children: List.generate(20, (index) {
-            return const MainCard();
-          }),
+        Expanded(child: BlocBuilder<SearchBloc, SearchState>(
+          builder: (context, state) {
+            return GridView.count(
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              crossAxisCount: 3,
+              childAspectRatio: 1 / 1.4,
+              shrinkWrap: true,
+              children: List.generate(20, (index) {
+                final movie = state.searchResultList[index];
+                print(movie.posterImageUrl);
+                return MainCard(
+                  imageUrl: movie.posterImageUrl,
+                );
+              }),
+            );
+          },
         ))
       ],
     );
@@ -32,15 +39,19 @@ class SearchResult extends StatelessWidget {
 }
 
 class MainCard extends StatelessWidget {
-  const MainCard({Key? key}) : super(key: key);
+  final String imageUrl;
+  const MainCard({Key? key, required this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(7),
-          image: const DecorationImage(
-              image: NetworkImage(imageUrl), fit: BoxFit.fill)),
+        borderRadius: BorderRadius.circular(7),
+        image: DecorationImage(
+          image: NetworkImage(imageUrl),
+          fit: BoxFit.fill,
+        ),
+      ),
     );
   }
 }

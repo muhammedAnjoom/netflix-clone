@@ -8,7 +8,7 @@ part 'search_resp.g.dart';
 @JsonSerializable()
 class SearchResp {
   @JsonKey(name: 'results')
-  List<SearchResultData>? results;
+  List<SearchResultData> results;
 
 
   SearchResp({ this.results = const []});
