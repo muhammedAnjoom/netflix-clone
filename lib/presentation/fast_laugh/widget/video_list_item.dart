@@ -77,7 +77,7 @@ class VideoListItem extends StatelessWidget {
                     ),
                     VideoActionsWidget(
                       icon: Icons.emoji_emotions,
-                      title: "LOo",
+                      title: "LOL",
                     ),
                     VideoActionsWidget(
                       icon: Icons.add,
