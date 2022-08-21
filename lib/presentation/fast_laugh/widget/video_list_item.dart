@@ -1,16 +1,43 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
+import 'package:netflix_clone/core/constants.dart';
 
-const imageUrl =
-    'https://www.themoviedb.org/t/p/w250_and_h141_face/84XPpjGvxNyExjSuLQe0SzioErt.jpg';
+import '../../../domain/downloads/models/downloads.dart';
+
+class VideoListItemInheritedWidget extends InheritedWidget {
+  final Widget widget;
+  final Downloads movieData;
+
+  const VideoListItemInheritedWidget({
+    required this.widget,
+    required this.movieData,
+  }) : super(child: widget);
+  @override
+  bool updateShouldNotify(covariant VideoListItemInheritedWidget oldWidget) {
+    return oldWidget.movieData != movieData;
+  }
+
+  static VideoListItemInheritedWidget? of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<VideoListItemInheritedWidget>();
+  }
+}
 
 class VideoListItem extends StatelessWidget {
   final int index;
-  const VideoListItem({Key? key, required this.index}) : super(key: key);
+  // final String imageUrl;
+  const VideoListItem({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final posterPath =
+        VideoListItemInheritedWidget.of(context)?.movieData.posterPath;
     return Stack(
       children: [
         Container(
@@ -38,19 +65,32 @@ class VideoListItem extends StatelessWidget {
                 ,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
+                  children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundImage: NetworkImage(imageUrl),
+                        backgroundImage: posterPath == null
+                            ? null
+                            : NetworkImage('$imageAppendUrl$posterPath'),
                       ),
                     ),
                     VideoActionsWidget(
-                        icon: Icons.emoji_emotions, title: "LOL"),
-                    VideoActionsWidget(icon: Icons.add, title: "My List"),
-                    VideoActionsWidget(icon: Icons.share, title: "Share"),
-                    VideoActionsWidget(icon: Icons.play_arrow, title: "Play")
+                      icon: Icons.emoji_emotions,
+                      title: "LOo",
+                    ),
+                    VideoActionsWidget(
+                      icon: Icons.add,
+                      title: "My List",
+                    ),
+                    VideoActionsWidget(
+                      icon: Icons.share,
+                      title: "Share",
+                    ),
+                    VideoActionsWidget(
+                      icon: Icons.play_arrow,
+                      title: "Play",
+                    )
                   ],
                 )
               ],
