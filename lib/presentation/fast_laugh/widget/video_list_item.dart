@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone/application/fast_laugh/fast_laugh_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../domain/downloads/models/downloads.dart';
@@ -88,8 +89,14 @@ class VideoListItem extends StatelessWidget {
                       title: "My List",
                     ),
                     GestureDetector(
-                      onTap: (){
-                        
+                      onTap: () {
+                        final movieName =
+                            VideoListItemInheritedWidget.of(context)
+                                ?.movieData
+                                .posterPath;
+                        if (movieName != null) {
+                          Share.share(movieName);
+                        }
                       },
                       child: VideoActionsWidget(
                         icon: Icons.share,
@@ -168,11 +175,11 @@ class _FastLaughVidoPlayerState extends State<FastLaughVidoPlayer> {
       height: double.infinity,
       child: _videoPlayerController.value.isInitialized
           ? AspectRatio(
-            aspectRatio: _videoPlayerController.value.aspectRatio,
-            child: VideoPlayer(
+              aspectRatio: _videoPlayerController.value.aspectRatio,
+              child: VideoPlayer(
                 _videoPlayerController,
               ),
-          )
+            )
           : const Center(
               child: CircularProgressIndicator(
                 strokeWidth: 2,
@@ -180,9 +187,10 @@ class _FastLaughVidoPlayerState extends State<FastLaughVidoPlayer> {
             ),
     );
   }
+
   @override
   void dispose() {
-   _videoPlayerController.dispose();
+    _videoPlayerController.dispose();
     super.dispose();
   }
 }
