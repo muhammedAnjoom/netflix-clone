@@ -20,16 +20,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       : super(SearchState.initial()) {
     // idel state
     on<Initalize>((event, emit) async {
-      if(state.ideleList.isNotEmpty){
-       emit(
-         SearchState(
+      if (state.ideleList.isNotEmpty) {
+        emit(SearchState(
           searchResultList: [],
           ideleList: state.ideleList,
           isLoading: false,
           isError: false,
-        )
-       );
-       return;
+        ));
+        return;
       }
       emit(
         const SearchState(
@@ -42,15 +40,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       // get trending
       final _result = await _downloadsService.getDownloadsImage();
       final _state = _result.fold((MainFailure f) {
-       return const SearchState(
+        return const SearchState(
           searchResultList: [],
           ideleList: [],
           isLoading: false,
           isError: true,
         );
-      
       }, (List<Downloads> list) {
-         return SearchState(
+        return SearchState(
           searchResultList: [],
           ideleList: list,
           isLoading: false,
@@ -61,7 +58,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       // show to ui
     });
     // serch result state
-    on<SerachMovie>((event, emit) async{
+    on<SerachMovie>((event, emit) async {
       // call search movie api
       emit(
         const SearchState(
@@ -71,7 +68,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isError: false,
         ),
       );
-      final _result = await _searchService.searchMovies(movieQuery: event.movieQuery);
+      final _result =
+          await _searchService.searchMovies(movieQuery: event.movieQuery);
       final _state = _result.fold((MainFailure f) {
         return const SearchState(
           searchResultList: [],
@@ -80,7 +78,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isError: true,
         );
       }, (SearchResp r) {
-         return SearchState(
+        return SearchState(
           searchResultList: r.results,
           ideleList: [],
           isLoading: false,

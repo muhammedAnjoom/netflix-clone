@@ -18,22 +18,9 @@ class VideoWidget extends StatelessWidget {
           height: 200,
           child: Image.network(
             imageUrl,
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
           ),
         ),
-        Positioned(
-          bottom: 10,
-          right: 10,
-          child: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.black.withOpacity(0.5),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.volume_off,
-                    size: 18,
-                  ))),
-        )
       ],
     );
   }

@@ -6,8 +6,14 @@ import '../../home/widget/custom_button_widget.dart';
 import '../../widget/video_widget.dart';
 
 class EveryOnesWatchingWidget extends StatelessWidget {
+  final String posterPath;
+  final String movieName;
+  final String decription;
   const EveryOnesWatchingWidget({
     Key? key,
+    required this.posterPath,
+    required this.movieName,
+    required this.decription,
   }) : super(key: key);
 
   @override

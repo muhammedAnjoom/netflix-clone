@@ -6,8 +6,20 @@ import '../../home/widget/custom_button_widget.dart';
 import '../../widget/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String decription;
   const ComingSoonWidget({
     Key? key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.decription,
   }) : super(key: key);
 
   @override
@@ -20,14 +32,14 @@ class ComingSoonWidget extends StatelessWidget {
           height: 450,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                "FEB",
-                style: TextStyle(fontSize: 16, color: kGray),
+                month,
+                style: const TextStyle(fontSize: 16, color: kGray),
               ),
               Text(
-                "11",
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                     fontSize: 30,
                     letterSpacing: 2,
                     fontWeight: FontWeight.bold),
@@ -41,40 +53,48 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const VideoWidget(
-                imageUrl: imageUrltemp1,
+              VideoWidget(
+                imageUrl: posterPath,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      "Purple Hearts",
-                      style: TextStyle(
-                          letterSpacing: -3,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
+                    Expanded(
+                      child: Text(
+                        movieName,
+                        softWrap: false,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            letterSpacing: -3,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    const Spacer(),
-                    Row(
-                      children: const [
-                        CustomButtonWidget(
-                          icon: Icons.notifications,
-                          title: "Remind me",
-                          iconSize: 20,
-                          textSize: 12,
-                          letterSpacingtext: 0,
-                        ),
-                        kWidth,
-                        CustomButtonWidget(
-                          icon: Icons.info,
-                          title: "Info",
-                          iconSize: 20,
-                          textSize: 12,
-                        ),
-                        kWidth
-                      ],
+                    // const Spacer(),
+                    Expanded(
+                      child: Row(
+                       mainAxisAlignment: MainAxisAlignment.end,
+                        children: const [
+                          CustomButtonWidget(
+                            icon: Icons.notifications,
+                            title: "Remind me",
+                            iconSize: 20,
+                            textSize: 12,
+                            letterSpacingtext: 0,
+                          ),
+                          kWidth,
+                          CustomButtonWidget(
+                            icon: Icons.info,
+                            title: "Info",
+                            iconSize: 20,
+                            textSize: 12,
+                          ),
+                          kWidth
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -82,14 +102,16 @@ class ComingSoonWidget extends StatelessWidget {
               kHeight,
               const Text("coming on Friday"),
               kHeight,
-              const Text(
-                "Purple Hearts",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Text(
+                movieName,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               kHeight,
-              const Text(
-                  "An aspiring musician agrees to\na marriage of convenience with a soon-to-deploy Marine, but a tragedy soon turns their fake relationship all too real.",
-                  style: TextStyle(color: kGray, fontSize: 15))
+              Text(decription,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(color: kGray, fontSize: 15))
             ],
           ),
         ),

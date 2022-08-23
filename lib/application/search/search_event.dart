@@ -4,7 +4,6 @@ part of 'search_bloc.dart';
 class SearchEvent with _$SearchEvent {
   const factory SearchEvent.initalize() = Initalize;
   const factory SearchEvent.searchMovie({
-    required String movieQuery, 
+    required String movieQuery,
   }) = SerachMovie;
-
 }

@@ -11,7 +11,6 @@ import 'package:netflix_clone/presentation/search/screen_search.dart';
 import '../../../application/downloads/downloads_bloc.dart';
 import '../../../application/fast_laugh/fast_laugh_bloc.dart';
 
-
 class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({Key? key}) : super(key: key);
 
@@ -19,7 +18,7 @@ class ScreenMainPage extends StatelessWidget {
     ScreenHome(),
     const ScreenNewAndHot(),
     const ScreenFastLaugh(),
-     ScreenSearch(),
+    ScreenSearch(),
     ScreenDownloads()
   ];
 
