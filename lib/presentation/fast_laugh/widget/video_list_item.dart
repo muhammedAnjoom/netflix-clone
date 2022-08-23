@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../domain/downloads/models/downloads.dart';
+import 'fast_lanugh_vido_playerState.dart';
 
 class VideoListItemInheritedWidget extends InheritedWidget {
   final Widget widget;
@@ -57,16 +58,7 @@ class VideoListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                // left side
-                CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.black.withOpacity(0.5),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.volume_off,
-                          size: 30,
-                        )))
+                const SizedBox()
                 //  right side
                 ,
                 Column(
@@ -115,12 +107,8 @@ class VideoListItem extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        final movieName =
-                            VideoListItemInheritedWidget.of(context)
-                                ?.movieData
-                                .posterPath;
-                        if (movieName != null) {
-                          Share.share(movieName);
+                        if (videoUrl != null) {
+                          Share.share(videoUrl);
                         }
                       },
                       child: const VideoActionsWidget(
@@ -128,7 +116,7 @@ class VideoListItem extends StatelessWidget {
                         title: "Share",
                       ),
                     ),
-                    VideoActionsWidget(
+                    const VideoActionsWidget(
                       icon: Icons.play_arrow,
                       title: "Play",
                     )
@@ -170,52 +158,3 @@ class VideoActionsWidget extends StatelessWidget {
   }
 }
 
-class FastLaughVidoPlayer extends StatefulWidget {
-  final String videoUrl;
-  final void Function(bool isPlaying) onStateChanged;
-  const FastLaughVidoPlayer(
-      {Key? key, required this.videoUrl, required this.onStateChanged})
-      : super(key: key);
-
-  @override
-  _FastLaughVidoPlayerState createState() => _FastLaughVidoPlayerState();
-}
-
-class _FastLaughVidoPlayerState extends State<FastLaughVidoPlayer> {
-  late VideoPlayerController _videoPlayerController;
-  @override
-  void initState() {
-    _videoPlayerController = VideoPlayerController.network(widget.videoUrl);
-    _videoPlayerController.initialize().then((value) {
-      setState(() {
-        _videoPlayerController.play();
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
-      child: _videoPlayerController.value.isInitialized
-          ? AspectRatio(
-              aspectRatio: _videoPlayerController.value.aspectRatio,
-              child: VideoPlayer(
-                _videoPlayerController,
-              ),
-            )
-          : const Center(
-              child: CircularProgressIndicator(
-                strokeWidth: 2,
-              ),
-            ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    super.dispose();
-  }
-}
