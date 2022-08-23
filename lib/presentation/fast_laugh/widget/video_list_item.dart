@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/application/fast_laugh/fast_laugh_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
@@ -80,11 +81,35 @@ class VideoListItem extends StatelessWidget {
                             : NetworkImage('$imageAppendUrl$posterPath'),
                       ),
                     ),
-                    VideoActionsWidget(
-                      icon: Icons.emoji_emotions,
-                      title: "LOL",
-                    ),
-                    VideoActionsWidget(
+                    ValueListenableBuilder(
+                        valueListenable: likedVideosIdNotifier,
+                        builder: (BuildContext c, Set<int> newLikedListIds,
+                            Widget? _) {
+                          final _index = index;
+                          if (newLikedListIds.contains(_index)) {
+                            return GestureDetector(
+                              onTap: () {
+                                likedVideosIdNotifier.value.remove(_index);
+                                likedVideosIdNotifier.notifyListeners();
+                              },
+                              child: const VideoActionsWidget(
+                                icon: Icons.favorite,
+                                title: "Iike",
+                              ),
+                            );
+                          }
+                          return GestureDetector(
+                            onTap: () {
+                              likedVideosIdNotifier.value.add(_index);
+                              likedVideosIdNotifier.notifyListeners();
+                            },
+                            child: const VideoActionsWidget(
+                              icon: Icons.favorite_outline,
+                              title: "Iiked",
+                            ),
+                          );
+                        }),
+                    const VideoActionsWidget(
                       icon: Icons.add,
                       title: "My List",
                     ),
@@ -98,7 +123,7 @@ class VideoListItem extends StatelessWidget {
                           Share.share(movieName);
                         }
                       },
-                      child: VideoActionsWidget(
+                      child: const VideoActionsWidget(
                         icon: Icons.share,
                         title: "Share",
                       ),

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_clone/domain/core/failures/main_failure.dart';
@@ -20,14 +21,17 @@ final dummyVideoUrls = [
   "https://statusour.com/wp-content/uploads/2021/09/Money-Heist-Whatsapp-Status-Video-Download-Full-Screen-4k-Status-9.mp4"
 ];
 
+ValueNotifier<Set<int>> likedVideosIdNotifier = ValueNotifier({});
+
 @injectable
 class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
-  FastLaughBloc(IDownloadsRepo _downlodsService,)
-      : super(FastLaughState.initial()) {
+  FastLaughBloc(
+    IDownloadsRepo _downlodsService,
+  ) : super(FastLaughState.initial()) {
     on<Initialize>((event, emit) async {
       emit(
           // sending loading to ui
-        const FastLaughState(
+          const FastLaughState(
         videosList: [],
         isLoading: true,
         isError: false,
@@ -35,17 +39,27 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
       // get trending movies
       final _result = await _downlodsService.getDownloadsImage();
       // log(_result.toString());
-      final respon = _result.fold((l) => const FastLaughState(
-        videosList: [],
-        isError: true,
-        isLoading: false
-      ), (r) => FastLaughState(
-        videosList: r,
-        isLoading: false,
-        isError: false
-      ));
+      final respon = _result.fold(
+          (l) => FastLaughState(
+                videosList: [],
+                isError: true,
+                isLoading: false,
+              ),
+          (r) => FastLaughState(
+                videosList: r,
+                isLoading: false,
+                isError: false,
+              ));
       // send to ui
       emit(respon);
+    });
+    on<LikeVideo>((event, emit) async {
+      likedVideosIdNotifier.value.add(event.id);
+      likedVideosIdNotifier.notifyListeners();
+    });
+    on<UnlikeVideo>((event, emit) async {
+      likedVideosIdNotifier.value.remove(event.id);
+      likedVideosIdNotifier.notifyListeners();
     });
   }
 }
