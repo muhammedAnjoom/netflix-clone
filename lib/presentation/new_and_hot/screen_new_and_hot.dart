@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
 import 'package:netflix_clone/presentation/home/widget/custom_button_widget.dart';
@@ -122,10 +125,24 @@ class ComingSoonWidgetList extends StatelessWidget {
               if (movie.id == null) {
                 return const SizedBox();
               }
+              String month = '';
+              String day ='';
+              try {
+                final _date = DateTime.tryParse(movie.releaseDate!);
+                final foramteDate = DateFormat.yMMMMd('en_US').format(_date!);
+                month =
+                    foramteDate.split(' ').first.substring(0, 3).toUpperCase();
+                day = movie.releaseDate!.split('-')[1];
+              } catch (e) {
+                log(e.toString());
+                month = '';
+                day ='';
+              }
+            
               return ComingSoonWidget(
                 id: movie.id.toString(),
-                month: "MAR",
-                day: "28",
+                month: month,
+                day: day,
                 posterPath: '$imageAppendUrl${movie.posterPath}',
                 movieName: movie.originalTitle ?? 'No title',
                 decription: movie.overview ?? 'no decription',
