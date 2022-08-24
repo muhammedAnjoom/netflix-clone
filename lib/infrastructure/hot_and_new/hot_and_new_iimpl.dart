@@ -35,7 +35,7 @@ class HotAndNewImplementation implements HotAndNewService{
 
   @override
   Future<Either<MainFailure, HotAndNewDataResp>> getHotAndNewTvData() async{
-   try {
+    try {
       final Response response = await Dio(BaseOptions()).get(
         ApiEndPoints.hotAndNewTv,
       );
