@@ -17,34 +17,41 @@ class ScreenFastLaugh extends StatelessWidget {
     });
     return Scaffold(
       body: SafeArea(
-        child: BlocBuilder<FastLaughBloc, FastLaughState>(
-          builder: (context, state) {
-            if (state.isLoading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state.isError) {
-              return const Center(
-                child: Text('error while get data'),
-              );
-            } else if (state.videosList.isEmpty) {
-              return const Center(
-                child: Text('error while get data'),
-              );
-            } else {
-              return PageView(
-                  scrollDirection: Axis.vertical,
-                  children: List.generate(state.videosList.length, (index) {
-                    return VideoListItemInheritedWidget(
-                      widget: VideoListItem(
-                        key: Key(index.toString()),
-                        index: index,
-                      ),
-                      movieData: state.videosList[index],
-                    );
-                  }));
-            }
+        child: RefreshIndicator(
+          onRefresh: () async {
+            BlocProvider.of<FastLaughBloc>(context).add(
+              const Initialize(),
+            );
           },
+          child: BlocBuilder<FastLaughBloc, FastLaughState>(
+            builder: (context, state) {
+              if (state.isLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state.isError) {
+                return const Center(
+                  child: Text('error while get data'),
+                );
+              } else if (state.videosList.isEmpty) {
+                return const Center(
+                  child: Text('error while get data'),
+                );
+              } else {
+                return PageView(
+                    scrollDirection: Axis.vertical,
+                    children: List.generate(state.videosList.length, (index) {
+                      return VideoListItemInheritedWidget(
+                        widget: VideoListItem(
+                          key: Key(index.toString()),
+                          index: index,
+                        ),
+                        movieData: state.videosList[index],
+                      );
+                    }));
+              }
+            },
+          ),
         ),
       ),
     );

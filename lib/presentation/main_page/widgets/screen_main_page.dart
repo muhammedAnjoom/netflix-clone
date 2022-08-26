@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/application/home/home_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/presentation/downloads/widgets/screen_downloads.dart';
 import 'package:netflix_clone/presentation/fast_laugh/Screen_fast_laugh.dart';
@@ -15,7 +16,7 @@ class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({Key? key}) : super(key: key);
 
   final _pages = [
-    ScreenHome(),
+    ScreenHome(key: Key('home screen'),),
     const ScreenNewAndHot(),
     const ScreenFastLaugh(),
     ScreenSearch(),
