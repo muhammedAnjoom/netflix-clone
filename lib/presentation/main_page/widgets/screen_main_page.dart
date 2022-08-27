@@ -16,7 +16,9 @@ class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({Key? key}) : super(key: key);
 
   final _pages = [
-    ScreenHome(key: Key('home screen'),),
+    ScreenHome(
+      key: Key('home screen'),
+    ),
     const ScreenNewAndHot(),
     const ScreenFastLaugh(),
     ScreenSearch(),
@@ -28,6 +30,9 @@ class ScreenMainPage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<DownloadsBloc>(context).add(
         const DownloadsEvent.getDownloadsImage(),
+      );
+      BlocProvider.of<HomeBloc>(context).add(
+        const GetHomeScreenData(),
       );
     });
     return Scaffold(

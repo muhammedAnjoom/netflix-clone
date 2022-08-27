@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
 import 'package:netflix_clone/presentation/home/widget/custom_button_widget.dart';
 
-class BackgroundCard extends StatelessWidget {
-  const BackgroundCard({Key? key}) : super(key: key);
+import '../../../application/home/home_bloc.dart';
 
+class BackgroundCard extends StatelessWidget {
+   BackgroundCard({Key? key, required this.imageUrl}) : super(key: key);
+  final List<String> imageUrl;
+  
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -13,8 +17,8 @@ class BackgroundCard extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 600,
-          decoration: const BoxDecoration(
-            image: DecorationImage(image: NetworkImage(mainImage)),
+          decoration:  BoxDecoration(
+            image: DecorationImage(image: NetworkImage(imageUrl[0])),
           ),
           foregroundDecoration: const BoxDecoration(
               gradient: LinearGradient(
