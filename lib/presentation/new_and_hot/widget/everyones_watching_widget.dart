@@ -19,7 +19,7 @@ class EveryOnesWatchingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -28,17 +28,16 @@ class EveryOnesWatchingWidget extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Text(
               movieName,
-              style:const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           kHeight,
-           Padding(
-            padding:const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-               decription,
-               overflow: TextOverflow.ellipsis,
-               maxLines: 3,
-                style:const  TextStyle(color: kGray, fontSize: 15)),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(decription,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
+                style: const TextStyle(color: kGray, fontSize: 15)),
           ),
           kHeight50,
           VideoWidget(

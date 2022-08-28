@@ -6,6 +6,7 @@ import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/domain/core/di/injectable.dart';
 import 'package:netflix_clone/presentation/main_page/widgets/screen_main_page.dart';
 
+import 'application/description/description_bloc.dart';
 import 'application/fast_laugh/fast_laugh_bloc.dart';
 import 'application/home/home_bloc.dart';
 import 'application/hot_and_new/hot_and_new_bloc.dart';
@@ -37,8 +38,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (ctx) => getIt<HotAndNewBloc>(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (ctx) => getIt<HomeBloc>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<DescriptionBloc>(),
         )
       ],
       child: MaterialApp(

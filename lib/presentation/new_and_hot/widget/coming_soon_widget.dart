@@ -76,7 +76,7 @@ class ComingSoonWidget extends StatelessWidget {
                     // const Spacer(),
                     Expanded(
                       child: Row(
-                       mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: const [
                           CustomButtonWidget(
                             icon: Icons.notifications,
@@ -109,8 +109,8 @@ class ComingSoonWidget extends StatelessWidget {
               ),
               kHeight,
               Text(decription,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(color: kGray, fontSize: 15))
             ],
           ),

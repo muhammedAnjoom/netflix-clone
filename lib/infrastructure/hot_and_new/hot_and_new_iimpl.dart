@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -11,9 +10,9 @@ import 'package:netflix_clone/domain/new_and_hot/model/discover.dart';
 import '../../domain/core/api_end_points.dart';
 
 @LazySingleton(as: HotAndNewService)
-class HotAndNewImplementation implements HotAndNewService{
+class HotAndNewImplementation implements HotAndNewService {
   @override
-  Future<Either<MainFailure, HotAndNewDataResp>> getHotAndNewMovieData() async{
+  Future<Either<MainFailure, HotAndNewDataResp>> getHotAndNewMovieData() async {
     try {
       final Response response = await Dio(BaseOptions()).get(
         ApiEndPoints.hotAndNewMovie,
@@ -31,10 +30,9 @@ class HotAndNewImplementation implements HotAndNewService{
       return const Left(MainFailure.clientFailure());
     }
   }
-  
 
   @override
-  Future<Either<MainFailure, HotAndNewDataResp>> getHotAndNewTvData() async{
+  Future<Either<MainFailure, HotAndNewDataResp>> getHotAndNewTvData() async {
     try {
       final Response response = await Dio(BaseOptions()).get(
         ApiEndPoints.hotAndNewTv,

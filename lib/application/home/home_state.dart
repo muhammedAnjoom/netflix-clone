@@ -3,9 +3,8 @@ part of 'home_bloc.dart';
 @freezed
 class HomeState with _$HomeState {
   const factory HomeState(
-      {
-        required String stateId,
-        required List<HotAndNewData> pastYearMovieList,
+      {required String stateId,
+      required List<HotAndNewData> pastYearMovieList,
       required List<HotAndNewData> trendingMovieList,
       required List<HotAndNewData> tenseDramaMovieList,
       required List<HotAndNewData> southIndianMovieList,

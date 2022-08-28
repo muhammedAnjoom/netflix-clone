@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/presentation/decriptions/widget/Screen_decription.dart';
 import 'package:netflix_clone/presentation/fast_laugh/widget/video_list_item.dart';
 import 'package:netflix_clone/presentation/search/widget/search_title.dart';
 
@@ -27,6 +28,7 @@ class SearchResult extends StatelessWidget {
                 final movie = state.searchResultList[index];
                 print(movie);
                 return MainCard(
+                  id: movie.id!,
                   imageUrl: movie.posterImageUrl,
                 );
               }),
@@ -40,16 +42,24 @@ class SearchResult extends StatelessWidget {
 
 class MainCard extends StatelessWidget {
   final String imageUrl;
-  const MainCard({Key? key, required this.imageUrl}) : super(key: key);
+  final int id;
+  const MainCard({Key? key, required this.imageUrl, required this.id})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7),
-        image: DecorationImage(
-          image: NetworkImage(imageUrl),
-          fit: BoxFit.fill,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (ctx) => ScreenDescription(id: id)));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(7),
+          image: DecorationImage(
+            image: NetworkImage(imageUrl),
+            fit: BoxFit.fill,
+          ),
         ),
       ),
     );

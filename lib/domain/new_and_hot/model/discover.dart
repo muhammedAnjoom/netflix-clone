@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-
 part 'discover.g.dart';
 
 @JsonSerializable()
@@ -18,6 +17,7 @@ class HotAndNewDataResp {
 
   Map<String, dynamic> toJson() => _$HotAndNewDataRespToJson(this);
 }
+
 @JsonSerializable()
 class HotAndNewData {
   bool? adult;
@@ -32,9 +32,9 @@ class HotAndNewData {
   // in cases of tv serices,use orgin name
   @JsonKey(name: 'original_name')
   String? originalName;
-  @JsonKey(name:'overview')
+  @JsonKey(name: 'overview')
   String? overview;
- 
+
   @JsonKey(name: 'poster_path')
   String? posterPath;
   @JsonKey(name: 'release_date')
@@ -45,16 +45,13 @@ class HotAndNewData {
   HotAndNewData({
     this.adult,
     this.backdropPath,
- 
     this.id,
     this.originalLanguage,
     this.originalTitle,
     this.overview,
-
     this.posterPath,
     this.releaseDate,
     this.title,
-
   });
 
   factory HotAndNewData.fromJson(Map<String, dynamic> json) {

@@ -12,19 +12,19 @@ part 'home_bloc.freezed.dart';
 
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final  HotAndNewService _homeService;
+  final HotAndNewService _homeService;
   HomeBloc(this._homeService) : super(HomeState.initial()) {
     // get home screendata
     on<GetHomeScreenData>((event, emit) async {
       // set loading to ui
       emit(state.copyWith(isLoading: true, hasError: false));
-    //   // get datat
+      //   // get datat
       final _movieResult = await _homeService.getHotAndNewMovieData();
       final _tvResutl = await _homeService.getHotAndNewTvData();
 
-    //   //transform data
-      final stateOne =  _movieResult.fold((MainFailure failures) {
-        return  HomeState(
+      //   //transform data
+      final stateOne = _movieResult.fold((MainFailure failures) {
+        return HomeState(
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           pastYearMovieList: [],
           trendingMovieList: [],
@@ -43,7 +43,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         tenseDarama.shuffle();
         final southIndia = resp.results;
         southIndia.shuffle();
-        return  HomeState(
+        return HomeState(
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           pastYearMovieList: pastYear,
           trendingMovieList: trending,
@@ -55,8 +55,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         );
       });
       emit(stateOne);
-     final stateTwo = _tvResutl.fold((MainFailure failure) {
-        return  HomeState(
+      final stateTwo = _tvResutl.fold((MainFailure failure) {
+        return HomeState(
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           pastYearMovieList: [],
           trendingMovieList: [],
@@ -66,10 +66,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           isLoading: false,
           hasError: true,
         );
-      } , (HotAndNewDataResp resp) {
+      }, (HotAndNewDataResp resp) {
         final topTenList = resp.results;
-         return  HomeState(
-           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
+        return HomeState(
+          stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           pastYearMovieList: state.pastYearMovieList,
           trendingMovieList: state.trendingMovieList,
           tenseDramaMovieList: state.tenseDramaMovieList,

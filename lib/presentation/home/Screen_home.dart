@@ -62,27 +62,50 @@ class ScreenHome extends StatelessWidget {
                               state.pastYearMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
+                          // get id pase year
+                          final _releasedPastYearId =
+                              state.pastYearMovieList.map((m) {
+                            return m.id;
+                          }).toList();
+                          _releasedPastYearId.shuffle();
                           // trending
                           final _trending = state.trendingMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
                           _trending.shuffle();
+                          // get id trendimg
+                          final _trendingId = state.trendingMovieList.map((m) {
+                            return m.id;
+                          }).toList();
                           //  trendse drama
                           final _trendse = state.tenseDramaMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
                           _trendse.shuffle();
+                          // get id trendse
+                          final _trendsId = state.tenseDramaMovieList.map((m) {
+                            return m.id;
+                          }).toList();
                           // south indian movie
                           final _southIndia =
                               state.southIndianMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
                           _southIndia.shuffle();
+                          // get id pase year
+                          final _southIndiaId =
+                              state.southIndianMovieList.map((m) {
+                            return m.id;
+                          }).toList();
                           // tv shows
                           final _top10tvShows = state.trendingTvList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
                           _top10tvShows.shuffle();
+                          // get id pase year
+                          final _top10tvShowsId = state.trendingTvList.map((m) {
+                            return m.id;
+                          }).toList();
                           print(state.trendingMovieList.length);
                           return ListView(
                             children: [
@@ -91,11 +114,13 @@ class ScreenHome extends StatelessWidget {
                               ),
                               kHeight,
                               MainTitleCard(
+                                id: _releasedPastYearId,
                                 title: "Released in the past year",
                                 posterList: _releasedPastYear,
                               ),
                               kHeight,
                               MainTitleCard(
+                                id: _trendingId,
                                 title: "Trending Now",
                                 posterList: _trending,
                               ),
@@ -106,11 +131,13 @@ class ScreenHome extends StatelessWidget {
                               ),
                               kHeight,
                               MainTitleCard(
+                                id: _trendsId,
                                 title: "Tense Dramas",
                                 posterList: _trendse,
                               ),
                               kHeight,
                               MainTitleCard(
+                                id: _southIndiaId,
                                 title: "South Indian Cinema",
                                 posterList: _southIndia,
                               ),
