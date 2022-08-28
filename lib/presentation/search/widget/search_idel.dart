@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/presentation/decriptions/Screen_decription.dart';
 import 'package:netflix_clone/presentation/search/widget/search_title.dart';
 
 class SearchIdelWidget extends StatelessWidget {
@@ -33,6 +34,7 @@ class SearchIdelWidget extends StatelessWidget {
                 itemBuilder: (ctx, index) {
                   final movie = state.ideleList[index];
                   return TopSearchItemTile(
+                    id: movie.id!,
                     title: movie.title ?? 'No title provider',
                     imageUrl: '$imageAppendUrl${movie.posterPath}',
                   );
@@ -53,8 +55,10 @@ class TopSearchItemTile extends StatelessWidget {
     Key? key,
     required this.title,
     required this.imageUrl,
+    required this.id,
   }) : super(key: key);
 
+  final int id;
   final String title;
   final String imageUrl;
 
@@ -63,13 +67,23 @@ class TopSearchItemTile extends StatelessWidget {
     final screenwidth = MediaQuery.of(context).size.width;
     return Row(
       children: [
-        Container(
-          width: screenwidth * 0.35,
-          height: 65,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              image: DecorationImage(
-                  image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (ctx) => ScreenDescription(id: id),
+              ),
+            );
+          },
+          child: Container(
+            width: screenwidth * 0.35,
+            height: 65,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                image: DecorationImage(
+                    image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+          ),
         ),
         kWidth,
         Expanded(

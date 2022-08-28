@@ -95,7 +95,6 @@ class ScreenHome extends StatelessWidget {
                               state.southIndianMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
-                          _southIndia.shuffle();
                           // get id pase year
                           final _southIndiaId =
                               state.southIndianMovieList.map((m) {
