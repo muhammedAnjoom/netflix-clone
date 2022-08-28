@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,7 +70,7 @@ class ScreenHome extends StatelessWidget {
                               state.pastYearMovieList.map((m) {
                             return m.id;
                           }).toList();
-                          _releasedPastYearId.shuffle();
+                          // _releasedPastYearId.shuffle();
                           // trending
                           final _trending = state.trendingMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
@@ -77,6 +80,7 @@ class ScreenHome extends StatelessWidget {
                           final _trendingId = state.trendingMovieList.map((m) {
                             return m.id;
                           }).toList();
+                          _trendingId.shuffle();
                           //  trendse drama
                           final _trendse = state.tenseDramaMovieList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
@@ -101,7 +105,6 @@ class ScreenHome extends StatelessWidget {
                           final _top10tvShows = state.trendingTvList.map((m) {
                             return '$imageAppendUrl${m.posterPath}';
                           }).toList();
-                          _top10tvShows.shuffle();
                           // get id pase year
                           final _top10tvShowsId = state.trendingTvList.map((m) {
                             return m.id;

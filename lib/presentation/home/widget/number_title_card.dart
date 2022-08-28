@@ -25,7 +25,7 @@ class NumberTitleCard extends StatelessWidget {
           child: ListView(
               scrollDirection: Axis.horizontal,
               children: List.generate(
-                  1,
+                  10,
                   (index) => NumberCard(
                         imageUrl: posterList[index],
                         index: index,

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/application/search/search_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
-import 'package:netflix_clone/presentation/decriptions/widget/Screen_decription.dart';
 import 'package:netflix_clone/presentation/fast_laugh/widget/video_list_item.dart';
 import 'package:netflix_clone/presentation/search/widget/search_title.dart';
+
+import '../../decriptions/Screen_decription.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({Key? key}) : super(key: key);
@@ -50,8 +51,12 @@ class MainCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (ctx) => ScreenDescription(id: id)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (ctx) => ScreenDescription(
+                      id: id,
+                    )));
       },
       child: Container(
         decoration: BoxDecoration(

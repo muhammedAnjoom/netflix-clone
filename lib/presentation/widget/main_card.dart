@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
-import 'package:netflix_clone/presentation/decriptions/widget/Screen_decription.dart';
-
 import '../../application/description/description_bloc.dart';
+import '../decriptions/Screen_decription.dart';
 
 class MainCard extends StatelessWidget {
   final String imageUrl;
