@@ -12,6 +12,7 @@ import 'application/fast_laugh/fast_laugh_bloc.dart';
 import 'application/home/home_bloc.dart';
 import 'application/hot_and_new/hot_and_new_bloc.dart';
 import 'application/search/search_bloc.dart';
+import 'presentation/onStartPage/scrren_onboarding.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
             textTheme: const TextTheme(
                 bodyText1: TextStyle(color: Colors.white),
                 bodyText2: TextStyle(color: Colors.white))),
-        home: ScreenSplash(),
+        home:  const ScreenSplash() ,
       ),
     );
   }
