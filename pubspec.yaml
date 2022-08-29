@@ -43,6 +43,7 @@ dependencies:
   intl: 0.17.0
   json_annotation: ^4.6.0
   json_serializable: ^6.3.1
+  lottie: ^1.4.2
   readmore: ^2.2.0
   share_plus: 4.0.3
   video_player: 2.3.0
@@ -65,8 +66,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/splashLogo/data.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

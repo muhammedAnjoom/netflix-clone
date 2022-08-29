@@ -5,6 +5,7 @@ import 'package:netflix_clone/application/downloads/downloads_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/domain/core/di/injectable.dart';
 import 'package:netflix_clone/presentation/main_page/widgets/screen_main_page.dart';
+import 'package:netflix_clone/presentation/splash/screen_splash.dart';
 
 import 'application/description/description_bloc.dart';
 import 'application/fast_laugh/fast_laugh_bloc.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
             textTheme: const TextTheme(
                 bodyText1: TextStyle(color: Colors.white),
                 bodyText2: TextStyle(color: Colors.white))),
-        home: ScreenMainPage(),
+        home: ScreenSplash(),
       ),
     );
   }

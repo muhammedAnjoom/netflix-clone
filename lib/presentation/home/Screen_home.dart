@@ -112,7 +112,7 @@ class ScreenHome extends StatelessWidget {
                           return ListView(
                             children: [
                               BackgroundCard(
-                                imageUrl: _top10tvShows,
+                                imageUrl: _releasedPastYear,
                               ),
                               kHeight,
                               MainTitleCard(
