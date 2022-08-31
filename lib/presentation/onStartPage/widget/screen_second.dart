@@ -18,14 +18,12 @@ class ScreenComman extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const AppBarTop(),
           kHeight20,
           Image.asset(imageAssets),
-           BottomSection(
-            title: title,
-          )
+          BottomSection(title: title)
         ],
       ),
     );

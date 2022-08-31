@@ -46,6 +46,7 @@ dependencies:
   lottie: ^1.4.2
   readmore: ^2.2.0
   share_plus: 4.0.3
+  smooth_page_indicator: ^1.0.0+2
   video_player: 2.3.0
 
 dev_dependencies:

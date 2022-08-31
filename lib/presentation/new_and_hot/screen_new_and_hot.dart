@@ -24,6 +24,7 @@ class ScreenNewAndHot extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(90),
           child: AppBar(
+            automaticallyImplyLeading: false,
             title: const Text(
               "New & Hot",
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
