@@ -111,9 +111,7 @@ class ScreenHome extends StatelessWidget {
                           print(state.trendingMovieList.length);
                           return ListView(
                             children: [
-                              BackgroundCard(
-                                imageUrl: _releasedPastYear,
-                              ),
+                              const BackgroundCard(),
                               kHeight,
                               MainTitleCard(
                                 id: _releasedPastYearId,

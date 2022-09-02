@@ -7,9 +7,7 @@ import 'package:netflix_clone/presentation/home/widget/custom_button_widget.dart
 import '../../../application/home/home_bloc.dart';
 
 class BackgroundCard extends StatelessWidget {
-  BackgroundCard({Key? key, required this.imageUrl}) : super(key: key);
-  final List<String> imageUrl;
-
+ const  BackgroundCard({Key? key,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -17,8 +15,8 @@ class BackgroundCard extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 600,
-          decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(imageUrl[0])),
+          decoration:const BoxDecoration(
+            image: DecorationImage(image: NetworkImage(mainScrenImage)),
           ),
           foregroundDecoration: const BoxDecoration(
               gradient: LinearGradient(

@@ -32,3 +32,4 @@ const TextStyle kHomeTitleText =
     TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
 
 const imageAppendUrl = "https://image.tmdb.org/t/p/w500";
+const mainScrenImage = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/z2yahl2uefxDCl0nogcRBstwruJ.jpg';
