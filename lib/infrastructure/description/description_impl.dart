@@ -24,7 +24,6 @@ class DescriptionMovie implements DescriptionService {
       // log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final result = DescriptionResp.fromJson(response.data);
-        // log(result.toString());
         return Right(result);
       } else {
         return const Left(MainFailure.serverFailure());

@@ -1,16 +1,32 @@
 # netflix_clone
 
-A new Flutter project.
+I am happy to share with you my first big project in flutter, an online Netflix clone app.
+Using IMDb movie api.using Domain Drive Design flutter architecture
 
-## Getting Started
+## ScreenShots
 
-This project is a starting point for a Flutter application.
+<table>
+    <tr>
+        <td><img src="assets/images/screenshot1.jpg" width="300" /></td>
+        <td><img src="assets/images/screenshot2.jpg" width="300" /></td>
+        <td><img src="assets/images/screenshot3.jpg" width="300" /></td>
+    </tr>
+    <tr>
+        <td><img src="assets/images/screenshot4.jpg" width="300" /></td>
+        <td><img src="assets/images/screenshot5.jpg" width="300" /></td>
+        <td><img src="assets/images/screenshot6.jpg" width="300" /></td>
+    </tr>
+</table>
 
-A few resources to get you started if this is your first Flutter project:
+## Screen recorder
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://user-images.githubusercontent.com/66232929/188278892-b07b4d31-e1ed-4054-9fab-1aaf4abd8c8f.MP4
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Android Application Package
+Install APK [Click](https://drive.google.com/file/d/1CUuQoBCU_TeazzU8UQqsUO34lYVp68mW/view?usp=sharing)
+
+## Building
+
+-Install Flutter
+- `flutter pub get`
+- `flutter run`

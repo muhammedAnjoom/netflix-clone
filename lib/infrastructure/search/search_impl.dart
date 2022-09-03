@@ -24,7 +24,6 @@ class searchImpl implements SearchService {
       // log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final result = SearchResp.fromJson(response.data);
-        log(result.toString());
         return Right(result);
       } else {
         return const Left(MainFailure.serverFailure());
